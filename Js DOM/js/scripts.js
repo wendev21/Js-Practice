@@ -57,9 +57,27 @@ window.onscroll = function(){
 const btnEnviar = document.querySelector('.boton--primario');
 btnEnviar.addEventListener('click', function(evento){
     console.log(evento);
-    evento.preventDefault();
+    // evento.preventDefault();
     console.log('Enviando Formulario');
 })
+// Event submit
+const formulario = document.querySelector('.formulario');
+formulario.addEventListener('submit', function(e){
+    e.preventDefault();
+// valid form
+const {nombre, email, mensaje} = datos;
+if (nombre  == '' || email === '' || mensaje === '')
+    {
+        mostrarError('Todos los campos son obligatorios');
+        return
+    }
+    else{
+        mostrarEnviado('El formulario se ha enviado correctamente');
+    }
+    console.log('Enviando Formulario....');
+})
+
+
 
 //Events input or textarea
 const datos = {
@@ -79,4 +97,25 @@ mensaje.addEventListener('input', printText);
 function printText(e){
     datos[e.target.id] = e.target.value;
     console.log(datos);
+}
+// show error
+
+function mostrarError(mensaje){
+    const error = document.createElement('P');
+    error.textContent = mensaje;
+    error.classList.add('error');
+    formulario.appendChild(error);
+    // fter 5sec
+    setTimeout(() => {
+        error.remove();
+    }, 5000);
+}
+function mostrarEnviado(mensaje){
+    const enviado = document.createElement('P');
+    enviado.textContent = mensaje;
+    enviado.classList.add('correcto');
+    formulario.appendChild(enviado);
+    setTimeout(() => {
+        enviado.remove();
+    }, 5000);
 }
