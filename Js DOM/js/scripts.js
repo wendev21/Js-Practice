@@ -2,7 +2,7 @@
 
 const heading = document.querySelector('.header__texto h2');
 heading.textContent = 'Nuevo heading';
-console.log(heading);
+// console.log(heading);
 
 // querySelectorAll
 
@@ -32,3 +32,20 @@ console.log(nuevoEnlace);
 // ADD DOM
 const navegacion = document.querySelector('.navegacion');
 navegacion.appendChild(nuevoEnlace);
+
+
+// EVENTS
+
+console.log(1);
+window.addEventListener('load', function(){ 
+    console.log(2);
+})
+
+window.onload = function(){
+    console.log(3);
+}
+
+document.addEventListener('DOMContentLoaded', function(){// only
+    console.log(4);
+})
+console.log(5);
